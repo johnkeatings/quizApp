@@ -32,16 +32,18 @@ class ViewController: UIViewController {
             answerLabel.text = "Incorrect"
         }
         
-        updateUI()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
+            self.updateUI()
+        }
+
     }
     
     func updateUI() {
         quizBrain.updateQuestion()
+        answerLabel.text = ""
         questionLabel.text = quizBrain.quiz[quizBrain.questionNumber].text
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
-            self.answerLabel.text = ""
-        }
+
     }
 
 }
